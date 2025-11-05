@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Download, FileText, Table, FileSpreadsheet, CheckCircle } from 'lucide-react';
+import { Download, FileText, Table, CheckCircle } from 'lucide-react';
 
 export function Export() {
   const [selectedGrade, setSelectedGrade] = useState<number>(1);

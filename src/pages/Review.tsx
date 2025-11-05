@@ -153,7 +153,6 @@ export function Review() {
 
           {filteredRecords.map((record) => {
             const config = statusConfig[record.status];
-            const StatusIcon = config.icon;
 
             return (
               <div

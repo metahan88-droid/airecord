@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Shield, Users, Key, Database, Bell, Download, Lock } from 'lucide-react';
+import { Shield, Users, Key, Database, Bell, Download } from 'lucide-react';
 
 export function Settings() {
   const [selectedTab, setSelectedTab] = useState<'roles' | 'data' | 'security' | 'notifications'>('roles');

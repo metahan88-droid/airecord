@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FileText, Plus, Edit, Trash2, AlertCircle, Search, Copy, Download, Upload } from 'lucide-react';
+import { Plus, Edit, Trash2, AlertCircle, Search, Copy, Upload } from 'lucide-react';
 
 export function Templates() {
   const [selectedTab, setSelectedTab] = useState<'templates' | 'forbidden' | 'rules'>('templates');

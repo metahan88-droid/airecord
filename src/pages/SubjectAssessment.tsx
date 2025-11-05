@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Users, FileText, Download, Link as LinkIcon, Plus, Search, Filter } from 'lucide-react';
+import { Link as LinkIcon, Plus, Filter } from 'lucide-react';
 
 export function SubjectAssessment() {
   const [selectedSubject, setSelectedSubject] = useState('');

@@ -75,8 +75,6 @@ export function AIWriting() {
     }
   };
 
-  const activeType = recordTypes.find(t => t.id === selectedType);
-
   return (
     <div className="space-y-6">
       {/* Page Header */}
