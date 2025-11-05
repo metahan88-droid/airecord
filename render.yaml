@@ -2,6 +2,7 @@ services:
   - type: web
     name: school-record-api
     runtime: python
+    rootDirectory: backend-fastapi
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
