@@ -27,11 +27,8 @@ export function AIWriting() {
     setIsGenerating(true);
 
     try {
-      // 백엔드 API URL은 .env 파일에서 설정합니다
-      // 옵션 1: Node.js/OpenAI - http://localhost:3001
-      // 옵션 2: FastAPI/Claude - http://localhost:3002
-      // 옵션 3: Flask - http://localhost:5000
-      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      // Production API (Render deployment)
+      const API_BASE = import.meta.env.VITE_API_URL || 'https://school-record-api.onrender.com';
       const API_URL = `${API_BASE}/api/generate`;
 
       const selectedStudentData = students.find(s => s.id === selectedStudent);
