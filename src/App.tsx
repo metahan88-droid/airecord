@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { Dashboard } from './pages/Dashboard';
 import { Students } from './pages/Students';
@@ -132,7 +132,7 @@ function MainLayout() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
@@ -149,7 +149,7 @@ function App() {
           <Route path="help" element={<Help />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
