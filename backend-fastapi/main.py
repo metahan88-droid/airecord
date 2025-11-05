@@ -5,6 +5,7 @@ from typing import List, Optional
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from example_templates import get_examples_for_type, format_examples
 
 load_dotenv()
 
@@ -54,6 +55,10 @@ async def health_check():
 @app.post("/api/generate")
 async def generate(request: GenerateRequest):
     try:
+        # Get examples for the record type
+        examples = get_examples_for_type(request.recordType, request.subject)
+        example_text = format_examples(examples) if examples else ""
+
         # Build prompt based on record type
         prompts = {
             "subject": f"""다음 학생의 교과 세부능력특기사항(세특)을 작성해주세요.
@@ -62,50 +67,54 @@ async def generate(request: GenerateRequest):
 과목: {request.subject or '해당 과목'}
 근거 자료:
 {request.evidence}
-
+{example_text}
 작성 규칙:
 - 200-500자 분량으로 작성
 - 구체적인 활동 내용과 성취를 기록
 - 학생의 강점과 특징을 객관적으로 서술
 - 금칙어 사용 금지 (우수하다, 뛰어나다, 1등 등)
-- NEIS 업로드 가능한 형식으로 작성""",
+- NEIS 업로드 가능한 형식으로 작성
+- 위 예시의 문체와 구성을 참고하되, 주어진 근거 자료에 맞게 내용을 작성""",
 
             "activity": f"""다음 학생의 창의적 체험활동 기록을 작성해주세요.
 
 학생: {request.studentName}
 근거 자료:
 {request.evidence}
-
+{example_text}
 작성 규칙:
 - 100-300자 분량으로 작성
 - 활동의 구체적인 과정과 결과를 기록
 - 학생의 참여도와 태도를 객관적으로 서술
-- 금칙어 사용 금지""",
+- 금칙어 사용 금지
+- 위 예시의 문체를 참고하여 작성""",
 
             "homeroom": f"""다음 학생의 담임종합의견을 작성해주세요.
 
 학생: {request.studentName}
 근거 자료:
 {request.evidence}
-
+{example_text}
 작성 규칙:
 - 300-700자 분량으로 작성
 - 학생의 전반적인 학교생활을 종합적으로 기술
 - 성장 과정과 변화를 구체적으로 기록
 - 긍정적이고 격려하는 톤으로 작성
-- 금칙어 사용 금지""",
+- 금칙어 사용 금지
+- 위 예시의 문체를 참고하여 작성""",
 
             "career": f"""다음 학생의 진로활동 기록을 작성해주세요.
 
 학생: {request.studentName}
 근거 자료:
 {request.evidence}
-
+{example_text}
 작성 규칙:
 - 200-400자 분량으로 작성
 - 진로 탐색 활동과 관심 분야를 구체적으로 기록
 - 학생의 진로 계획과 준비 과정을 서술
-- 금칙어 사용 금지"""
+- 금칙어 사용 금지
+- 위 예시의 문체를 참고하여 작성"""
         }
 
         prompt = prompts.get(request.recordType, prompts["subject"])
