@@ -1,6 +1,6 @@
-# Python FastAPI + Claude Backend
+# Python FastAPI + Google Gemini Backend
 
-생기부 포털의 Python/FastAPI + Anthropic Claude API 백엔드입니다.
+생기부 포털의 Python/FastAPI + Google Gemini API 백엔드입니다.
 
 ## 설치 방법
 
@@ -13,7 +13,7 @@ pip install -r requirements.txt
 `.env` 파일을 생성하고 다음 내용을 추가하세요:
 
 ```env
-ANTHROPIC_API_KEY=your-claude-api-key-here
+GOOGLE_API_KEY=your-google-api-key-here
 PORT=3002
 ```
 
@@ -70,19 +70,29 @@ uvicorn main:app --reload --port 3002
 
 ## 모델
 
-- 기본 모델: `claude-3-5-sonnet-20241022`
-- 최대 토큰: 1500
-- Temperature: 0.7
+- 기본 모델: `gemini-2.0-flash-exp`
+- Google Gemini API 사용
+- Temperature: 기본값
 
 ## 특징
 
-- ✅ Anthropic Claude 3.5 Sonnet 사용
+- ✅ Google Gemini 2.0 Flash 사용
 - ✅ 금칙어 자동 검사
 - ✅ 4가지 기록 유형 지원 (세특, 창체, 담임종합, 진로)
 - ✅ 배치 생성 지원
 - ✅ CORS 설정 완료
-- ✅ 토큰 사용량 추적
+- ✅ 무료 티어 사용 가능
 - ✅ FastAPI 자동 문서 (http://localhost:3002/docs)
+
+## Render 배포
+
+1. [Render](https://render.com)에 가입
+2. "New +" → "Web Service" 선택
+3. GitHub 저장소 연결
+4. Root Directory: `backend-fastapi`
+5. Environment Variables 추가:
+   - `GOOGLE_API_KEY`: Google API 키 입력
+6. Deploy 클릭
 
 ## API 문서
 
