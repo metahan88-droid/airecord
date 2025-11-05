@@ -9,6 +9,17 @@ AI 기반 생활기록부 작성 및 관리 시스템
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-orange)
 ![Claude](https://img.shields.io/badge/Claude-3.5%20Sonnet-purple)
 
+## 🚀 원클릭 배포
+
+### 프론트엔드 (GitHub Pages)
+이미 배포됨: [https://metahan88-droid.github.io/airecord/](https://metahan88-droid.github.io/airecord/)
+
+### 백엔드 (Render)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/metahan88-droid/airecord)
+
+**클릭 후 환경 변수 설정:**
+- `GOOGLE_API_KEY`: 구글 Gemini API 키 입력
+
 ## 🎯 주요 기능
 
 ### 📱 12개 통합 페이지
